@@ -1,22 +1,32 @@
 Projet text mining - Analyse des tweets de ChatGPT
 
+Problématique : Dans quels contextes ChatGPT est utilisé et comment les utilisateurs réagissent à son utilisation ?
+
 1 - Scrapping des données
 
 2 - Nettoyage des données 
           - suppression liens/URL
           - suppression noms utilisateurs
           - suppression hashtags
+          - tokenisation
           - racinisation
           - lemmatisation
-          - tokenisation
           - suppression stopwords
-          - 
+          - regroupement de variantes, reconnaissance des mots composés, d'expressions spécifiques
+         
+         
+3 - Statistiques descriptives
+          - nuages de mots
+          - graphique des dépendances
+          - analyse de la matrice "documents x termes" : analyse des fréquences des mots les plus importants
+          - AFC sur la matrice "documents x termes"
+          - classificateur bayésien naïf 
           
 
-3 - Analyse des sentiments
+4 - Analyse des sentiments
 
 
-4 - Analyse de thèmes
+5 - Analyse de thèmes
 
 
-5 - Conclusion 
+6 - Conclusion 
