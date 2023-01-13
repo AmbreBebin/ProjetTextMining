@@ -5,9 +5,9 @@ Problématique : Dans quels contextes ChatGPT est utilisé et comment les utilis
 1 - Scrapping des données
 
 2 - Nettoyage des données 
-          - suppression liens/URL
-          - suppression noms utilisateurs
-          - suppression hashtags
+          - suppression liens/URL (regex)
+          - suppression noms utilisateurs (regex)
+          - suppression hashtags (regex)
           - tokenisation
           - racinisation
           - lemmatisation
@@ -20,13 +20,26 @@ Problématique : Dans quels contextes ChatGPT est utilisé et comment les utilis
           - graphique des dépendances
           - analyse de la matrice "documents x termes" : analyse des fréquences des mots les plus importants
           - AFC sur la matrice "documents x termes"
-          - classificateur bayésien naïf 
           
-
+          
+5 - Analyse de thèmes
+          - Allocation de Dirichlet Latente (LDA) : cherche à détecter des thématiques
+                    - choix du nombre de thématiques
+                    - on s’intéresse aux k premiers termes de chaque thématique (ceux quiont la plus forte probabilité d’appartenir à la thématique)
+                    - on identifie le thème de chaque thématique
+                    - proba qu'un mot apppartienne à un thème
+                    - proba qu'un tweet appartienne à un thème
+                    - distance de Hellinger entre les thématiques
+          - Analyse sémantique latente (LSA) : chercheà detecter des "concepts latents"
+          - 
+          
+          
+          
+          
 4 - Analyse des sentiments
 
 
-5 - Analyse de thèmes
+
 
 
 6 - Conclusion 
