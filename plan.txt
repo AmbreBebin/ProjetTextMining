@@ -1,1 +1,22 @@
-Projet text mining
+Projet text mining - Analyse des tweets de ChatGPT
+
+1 - Scrapping des données
+
+2 - Nettoyage des données 
+          - suppression liens/URL
+          - suppression noms utilisateurs
+          - suppression hashtags
+          - racinisation
+          - lemmatisation
+          - tokenisation
+          - suppression stopwords
+          - 
+          
+
+3 - Analyse des sentiments
+
+
+4 - Analyse de thèmes
+
+
+5 - Conclusion 
