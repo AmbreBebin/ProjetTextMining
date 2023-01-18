@@ -9,13 +9,16 @@ Problématique : Dans quels contextes ChatGPT est utilisé et comment les utilis
 
 
 2 - Nettoyage des données 
-          - suppression liens/URL (regex)
-          - suppression noms utilisateurs (regex)
-          - suppression hashtags (regex)
-          - tokenisation
+          - suppression liens/URL (regex) OK
+          - suppression noms utilisateurs (regex) OK
+          - suppression hashtags (regex) OK
+          - suppression stopwords OK
+          - suppression ponctuation OK
+          - minuscule OK
+          - tokenisation OK
           - racinisation
           - lemmatisation
-          - suppression stopwords
+          
           - regroupement de variantes, reconnaissance des mots composés, d'expressions spécifiques
          
   
