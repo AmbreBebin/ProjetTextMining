@@ -16,8 +16,7 @@ Problématique : Dans quels contextes ChatGPT est utilisé et comment les utilis
           - suppression ponctuation OK
           - minuscule OK
           - tokenisation OK
-          - racinisation
-          - lemmatisation
+          - lemmatisation OK
           
           - regroupement de variantes, reconnaissance des mots composés, d'expressions spécifiques
          
