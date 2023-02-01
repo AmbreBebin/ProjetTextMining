@@ -23,7 +23,7 @@ Idée de plan :
 	- utilisateurs qui craignent que les robots remplacent les jobs
 	- ceux qui pensent que c'est avancé technologique
 	- tweet par ChatGPT
-puis analyse de freq, AFC, nuage, analyse des sentimentpar thématiques pour comparer avec la seconde partie
+puis analyse de freq, AFC, nuage, analyse des sentiment par thématiques pour comparer avec la seconde partie
 4ème temps : analyse de sentiment
 	- supprimer les tweets faits par ChatGPT (pas besoin de savoir que Tangi a un lapin)
 
