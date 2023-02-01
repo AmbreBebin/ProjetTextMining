@@ -1,0 +1,12 @@
+Temporalité :
+	- récupérer les dates
+	- comparaison des anciens et des nouveaux tweets (par ex : la première semaine et cette semaine) pour voir s'il y a une évolution de pensée
+
+Thématique : 
+	- est ce que 2 groupes se dégagent ?
+		- ceux qui ont peur de l'outil
+		- ceux qui le testent et font des blagues
+
+Sentiment : 
+	- inquiets/impressionnés
+
