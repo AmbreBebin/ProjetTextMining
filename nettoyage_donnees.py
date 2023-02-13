@@ -12,21 +12,20 @@ Ici, text signifie un unique tweet
 
 """
 
-text = "Quand je suis en pleine crise, Tangi m'a énervé ! #ChatGPT @TanguyTallec"
-
 import re
 import nltk
+import spacy
+import pandas as pd
 from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
-from nltk.stem.snowball import SnowballStemmer
 
 
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('stopwords')
+
+#nltk.download('punkt')
+#nltk.download('wordnet')
+#nltk.download('stopwords')
 
 
+text = "Quand je suis en pleine crise, Tangi m'a énervé ! #ChatGPT @TanguyTallec"
 
 ### NETTOYAGE REGEX
 def nettoyage_regex(text):
@@ -36,44 +35,64 @@ def nettoyage_regex(text):
     
     return text
 
-text = nettoyage_regex(text)
-
 ### TOKENISATION
 def tokenisation(text):
     tokenizer = nltk.tokenize.WordPunctTokenizer()
     tweet_tokens = [tokenizer.tokenize(text)]
     return tweet_tokens[0]
 
-
-text = tokenisation(text)
-
-
 ### STOP WORDS
-stop_words = set(stopwords.words('french'))
+stop_words = stopwords.words('french')
+stop_words.append("chatgpt")
+stop_words.append("chat")
+stop_words.append("gpt")
+stop_words = set(stop_words)
 def stop_words_function(text):
     return [w.lower() for w in text if not w.lower() in stop_words]
-
-text = stop_words_function(text)
 
 ## SUPPRESSION PONCTUATION
 def suppr_ponct(text):
     return [token for token in text if token.isalnum()]
 
-text = suppr_ponct(text)
-
-
 ### LEMMATISATION
-# Initialisation du lemmatiseur
-lemmatizer = WordNetLemmatizer()
-
-# Lemmatisation des tokens
-lemmatized_tokens = [lemmatizer.lemmatize(token) for token in text]
-
-print(lemmatized_tokens)
-
-
-### RACINALISATION
+nlp = spacy.load('fr_core_news_md')
+def lemmatisation(text):
+    lem = []
+    for i in range(len(text)):
+        doc = nlp(text[i])
+        for token in doc:
+            lem.append(token.lemma_)
+    return lem
 
 
-englishStemmer = SnowballStemmer("french")
+def nettoyage(text):
+    text = nettoyage_regex(text)
+    text = tokenisation(text)
+    text = stop_words_function(text)
+    text = suppr_ponct(text)
+    text = lemmatisation(text)
+    
+    return text
 
+text = "Aujourd'hui, mon lapin est sortie de sa cage. Il a voulu s'échapper pour aller manger des carottes! ;)"
+
+text = nettoyage_regex(text)
+text = tokenisation(text)
+text = stop_words_function(text)
+text = suppr_ponct(text)
+text = lemmatisation(text)
+
+
+
+# Importation données
+data_now = pd.read_csv("data_chatgpt.csv", sep=';', encoding = "utf-8")
+data_before = pd.read_csv("data_chatgpt_before.csv", sep=';', encoding = "utf-8")
+
+# Boucle de nettoyage
+list_tweet_now = []
+for i in range(len(data_now)) :
+    list_tweet_now.append(nettoyage(data_now.iloc[i, 0]))
+
+list_tweet_before = []
+for i in range(len(data_before)) :
+    list_tweet_before.append(nettoyage(data_before.iloc[i, 0]))
