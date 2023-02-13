@@ -1,0 +1,48 @@
+Encodage : 
+	- modifier encodage après l'exportation
+
+Orthographe : 
+	- expliquer qu'on a identifier le pb d'orthographe mais on n'a pas le temps de traiter le pb. 
+	- Il faut donc expliquer comment on aurait pu le régler dans le rapport (exemple : score entre 2 mots) si on a pas le temps
+
+Retweet :
+	- supprimer car ca biaise la fréquence des mots
+	- plutot appliquer un poids à chaque tweet en fonction du nombre de retweets et likes
+	- il faut se concentrer sur les tweets initiaux
+	- si on garde les retweets => ajouter colonne qui dit que c'est un retweet (is_retweet)
+	- vérifier qu'on a pas le meme texte dans 2 lignes (ca voudrait dire que c'est un retweet)
+
+Robot : 
+	- biais dans notre analyse si un orbot tweet 1000 fois la meme chose
+	- dédoublonner
+
+Idée de plan : 
+1er temps : traitement et nettoyage des données
+2ème temps : analyse descriptive sur l'ensemble des tweets (freq, wordcloud, AFC)
+3ème temps  : groupement par thèmes
+	- utilisateurs qui craignent que les robots remplacent les jobs
+	- ceux qui pensent que c'est avancé technologique
+	- tweet par ChatGPT
+puis analyse de freq, AFC, nuage, analyse des sentiment par thématiques pour comparer avec la seconde partie
+4ème temps : analyse de sentiment
+	- supprimer les tweets faits par ChatGPT (pas besoin de savoir que Tangi a un lapin)
+
+Stopwords : 
+	- mots qui reviennent souvent : ChatGPT, chatbot, robot dans les stopwords
+	- supprimer tout ce qui est trop corrélé
+
+Problèmes :
+	- Identifier les pb par exemple lemmatisation et expliquer comment on s'est débrouillé. 
+	- Cas particuliers : les identifier et proposer des pistes de corrections pour les traiter.
+
+
+Pour le 13 février : 
+	- finir nettoyage des données
+	- finir les stats desc
+	- avancer les groupements et l'analyse des sentiments
+	- avoir des graphiques et des choses à montrer
+
+Compte rendu à rendre le 17 février au plus tard le 19 février
+
+Présentation devant la classe : 23 février
+

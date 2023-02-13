@@ -1,0 +1,55 @@
+Projet text mining - Analyse des tweets de ChatGPT
+
+Problématique : Dans quels contextes ChatGPT est utilisé et comment les utilisateurs réagissent à son utilisation ?
+
+
+
+1 - Scrapping des données
+
+
+
+2 - Nettoyage des données 
+          - suppression liens/URL (regex) OK
+          - suppression noms utilisateurs (regex) OK
+          - suppression hashtags (regex) OK
+          - suppression stopwords OK
+          - suppression ponctuation OK
+          - minuscule OK
+          - tokenisation OK
+          - lemmatisation OK
+          
+          - regroupement de variantes, reconnaissance des mots composés, d'expressions spécifiques
+         
+  
+  
+3 - Statistiques descriptives
+          - nuages de mots
+          - graphique des dépendances
+          - analyse des fréquences des mots : 
+                    - graphique de fréquences d'apparition
+                    - contexte d'apparition
+          - AFC sur la matrice "documents x termes"
+          
+ 
+ 
+4 - Analyse de thèmes
+          - Allocation de Dirichlet Latente (LDA) : cherche à détecter des thématiques
+                    - choix du nombre de thématiques
+                    - on s’intéresse aux k premiers termes de chaque thématique (ceux quiont la plus forte probabilité d’appartenir à la thématique)
+                    - on identifie le thème de chaque thématique
+                    - proba qu'un mot apppartienne à un thème
+                    - proba qu'un tweet appartienne à un thème
+                    - distance de Hellinger entre les thématiques
+          - Analyse sémantique latente (LSA) : chercheà detecter des "concepts latents"
+                    - présence de co-occurrences et de corrélations, pas nécessairement deux à deux, mais multiples, entre plusieurs termes
+
+          
+          
+          
+5 - Analyse des sentiments
+          - attribution d'un score pour définir si le tweet est positif ou négatif
+
+
+
+
+6 - Conclusion 
