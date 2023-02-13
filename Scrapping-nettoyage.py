@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 ### NETTOYAGE DONNEES - DEFINITION DES FONCTIONS
 
 import re
@@ -93,6 +94,7 @@ tweets_df_now = pd.DataFrame(tweets_list, columns=['Tweet'])
 
 tweets_df_now.to_csv("data_chatgpt_now.csv", index = False)
 tweets_df_before.to_csv("data_chatgpt_before.csv", index = False)
+
 
 
 
