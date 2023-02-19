@@ -73,7 +73,7 @@ def nettoyage_phrase(text):
 import snscrape.modules.twitter as sntwitter 
 
 
-maxTweets = 15
+maxTweets = 15000
 
 
 tweets_list = [] 
