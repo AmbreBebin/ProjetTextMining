@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 ### NETTOYAGE DONNEES - DEFINITION DES FONCTIONS
 
 import re
@@ -33,6 +32,8 @@ stop_words = stopwords.words('french')
 stop_words.append("chatgpt")
 stop_words.append("chat")
 stop_words.append("gpt")
+stop_words.append("avoir")
+stop_words.append("être")
 stop_words = set(stop_words)
 def stop_words_function(text):
     return [w.lower() for w in text if not w.lower() in stop_words]
@@ -54,12 +55,16 @@ def lemmatisation(text):
 def nettoyage(text):
     text = nettoyage_regex(text)
     text = tokenisation(text)
-    text = stop_words_function(text)
     text = suppr_ponct(text)
     text = lemmatisation(text)
-    
+    text = stop_words_function(text)
+    text = [elem.replace('ia', 'intelligence artificielle') for elem in text]
     return text
 
+def nettoyage_phrase(text):
+    text = nettoyage_regex(text)
+    text = tokenisation(text)
+    return text
 
 
 ### RECUPERATON DES DONNEES 
@@ -68,36 +73,50 @@ def nettoyage(text):
 import snscrape.modules.twitter as sntwitter 
 
 
-maxTweets = 15000
+maxTweets = 15
 
 
 tweets_list = [] 
+tweets_phrase = []
 # Using TwitterSearchScraper to scrape data and append tweets to list 
 for i,tweet in enumerate(sntwitter.TwitterSearchScraper(query="chatgpt lang:fr since:2022-11-15 until:2022-12-15").get_items()):
     if i>maxTweets:
         break
     tweets_list.append(' '.join(nettoyage([tweet.content][0])))
+    tweets_phrase.append(' '.join(nettoyage_phrase([tweet.content][0])))
+    
+    
 tweets_df_before = pd.DataFrame(tweets_list, columns=['Tweet'])
+tweets_df_before = tweets_df_before.dropna()
+tweets_df_before = tweets_df_before.reset_index(drop=True)
+
+tweets_df_before_phrase = pd.DataFrame(tweets_phrase, columns=['Tweet'])
+tweets_df_before_phrase = tweets_df_before_phrase.dropna()
+tweets_df_before_phrase = tweets_df_before_phrase.reset_index(drop=True)
 
 
-tweets_list = [] 
+
+tweets_list = []
+tweets_phrase = []
 # Using TwitterSearchScraper to scrape data and append tweets to list 
 for i,tweet in enumerate(sntwitter.TwitterSearchScraper(query="chatgpt lang:fr since:2023-01-10 until:2023-02-10").get_items()):
     if i>maxTweets:
         break
     tweets_list.append(' '.join(nettoyage([tweet.content][0])))
+    tweets_phrase.append(' '.join(nettoyage_phrase([tweet.content][0])))
+    
+    
 tweets_df_now = pd.DataFrame(tweets_list, columns=['Tweet'])
+tweets_df_now = tweets_df_now.dropna()
+tweets_df_now = tweets_df_now.reset_index(drop=True)
+
+tweets_df_now_phrase = pd.DataFrame(tweets_phrase, columns=['Tweet'])
+tweets_df_now_phrase = tweets_df_before_phrase.dropna()
+tweets_df_now_phrase = tweets_df_before_phrase.reset_index(drop=True)
 
 
 
-
-
-tweets_df_now.to_csv("data_chatgpt_now.csv", index = False)
-tweets_df_before.to_csv("data_chatgpt_before.csv", index = False)
-
-
-
-
-
-
-
+tweets_df_now.to_csv("data_chatgpt_now_nettoye.csv", index = False)
+tweets_df_before.to_csv("data_chatgpt_before_nettoye.csv", index = False)
+tweets_df_now_phrase.to_csv("data_chatgpt_now_phrase.csv", index = False)
+tweets_df_before_phrase.to_csv("data_chatgpt_before_phrase.csv", index = False)
